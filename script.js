@@ -33,11 +33,10 @@ function start() {
     // countdown
     let timerFunction = () => {
         //change the display
-        document.getElementById('minutes').innerHTML = workMinutes;
-        document.getElementById('seconds').innerHTML = seconds;
+        document.getElementById('minutes').innerHTML = workMinutes<10 ? "0" + workMinutes: workMinutes;
+        document.getElementById('seconds').innerHTML = seconds< 10 ? "0" + seconds : seconds;
 
         // start
-        seconds = seconds - 1;
 
         if(seconds === 0) {
             workMinutes = workMinutes - 1;
@@ -61,7 +60,9 @@ function start() {
                 }
             }
             seconds = 59;
-        }
+        }else {
+        seconds = seconds - 1;
+    }
     }
 
     // start countdown
