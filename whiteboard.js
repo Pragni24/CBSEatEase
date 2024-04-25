@@ -68,10 +68,10 @@ document.getElementById('eraserSizeRange').addEventListener('input', (e) => {
     eraserSize = e.target.value;
 });
 
-document.getElementById('clearButton').addEventListener('click', () => {
+document.getElementById('clearButton').addEventListener('click', (event) => {
+  event.stopPropagation(); // Prevent bubbling
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
-
 
 
 
