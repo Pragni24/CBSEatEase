@@ -15,7 +15,7 @@ canvas {
     left: 10px;
 }
 
-.tools button {
+.tools button, .tools input {
     margin-right: 10px;
     padding: 5px 10px;
     font-size: 16px;
