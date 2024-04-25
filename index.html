@@ -18,8 +18,16 @@
         <a href="biology.html">Biology</a>
         <a href="pomodoro.html">Pomodoro Timer</a>
         <a href="whiteboard.html">Whiteboard</a>
-        <a href="calculator.html">Calculator</a>
+        <a href="#" onclick="toggleCalculator()">Calculator</a>
     </nav>
+
+    <div id="calculatorPopup" class="main" style="display: none;">
+      <!-- Include calculator content from calculator.html -->
+      <object type="text/html" data="calculator.html" style="width: 100%; height: 100%;"></object>
+   </div>
+
+    <script src="calculator.js"></script>
+    
     <main>
         <h2>About Us</h2>
         <p>Welcome to CBSEatEase, your one-stop solution for 12th class CBSE board exam preparation! We understand the challenges students face while juggling preparation for various entrance examinations along with board exams. Often, preparation for boards is left for the last two months, leading to stress and anxiety.</p>
