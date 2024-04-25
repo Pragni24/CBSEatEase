@@ -4,6 +4,8 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 let currentTool = 'pen';
+let penColor = '#000000';
+let penThickness = 2;
 
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
@@ -15,18 +17,9 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
-        if (currentTool === 'eraser') {
-            ctx.strokeStyle = '#ffffff'; // Use white color for eraser
-            ctx.lineWidth = 20; // Set eraser size
-        } else if (currentTool === 'highlighter') {
-            ctx.globalAlpha = 0.3; // Set transparency for highlighter effect
-            ctx.strokeStyle = '#ffeb3b'; // Use yellow color for highlighter
-            ctx.lineWidth = 10; // Set highlighter size
-        } else {
-            ctx.globalAlpha = 1; // Reset transparency
-            ctx.strokeStyle = '#000000'; // Use black color for pen
-            ctx.lineWidth = 2; // Set pen size
-        }
+        ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : penColor;
+        ctx.lineWidth = currentTool === 'eraser' ? 20 : penThickness;
+        ctx.lineCap = 'round';
         ctx.stroke();
         [lastX, lastY] = [e.offsetX, e.offsetY];
     }
@@ -43,3 +36,23 @@ canvas.addEventListener('mouseout', () => {
 function setTool(tool) {
     currentTool = tool;
 }
+
+document.getElementById('colorPicker').addEventListener('input', (e) => {
+    penColor = e.target.value;
+});
+
+document.getElementById('thicknessRange').addEventListener('input', (e) => {
+    penThickness = e.target.value;
+});
+
+document.getElementById('clearButton').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+document.getElementById('saveButton').addEventListener('click', () => {
+    const image = canvas.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.href = image;
+    a.download = 'whiteboard.png';
+    a.click();
+});
