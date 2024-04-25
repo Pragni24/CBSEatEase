@@ -18,7 +18,8 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
         if (currentTool === 'eraser') {
-            ctx.globalCompositeOperation = 'destination-out'; // Use eraser effect
+        
+            ctx.strokeStyle = '#ffffff'; // Use white color for eraser
             ctx.lineWidth = 20; // Set eraser size
         } else if (currentTool === 'highlighter') {
             ctx.globalCompositeOperation = 'source-over'; // Reset drawing mode
