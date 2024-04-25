@@ -6,6 +6,7 @@ let lastY = 0;
 let currentTool = 'pen';
 let penColor = '#000000';
 let penThickness = 2;
+let isHighlighterActive = false;
 
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
@@ -17,8 +18,18 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : penColor;
-        ctx.lineWidth = currentTool === 'eraser' ? 20 : penThickness;
+        if (currentTool === 'eraser') {
+            ctx.strokeStyle = '#ffffff'; // Use white color for eraser
+            ctx.lineWidth = 20; // Set eraser size
+        } else if (currentTool === 'highlighter') {
+            ctx.globalAlpha = 0.3; // Set transparency for highlighter effect
+            ctx.strokeStyle = '#ffeb3b'; // Use yellow color for highlighter
+            ctx.lineWidth = 10; // Set highlighter size
+        } else {
+            ctx.globalAlpha = 1; // Reset transparency
+            ctx.strokeStyle = penColor; // Use selected color for pen
+            ctx.lineWidth = penThickness; // Set pen size
+        }
         ctx.lineCap = 'round';
         ctx.stroke();
         [lastX, lastY] = [e.offsetX, e.offsetY];
@@ -35,6 +46,8 @@ canvas.addEventListener('mouseout', () => {
 
 function setTool(tool) {
     currentTool = tool;
+    isHighlighterActive = tool === 'highlighter'; // Set highlighter state
+    ctx.globalAlpha = isHighlighterActive ? 0.3 : 1; // Reset transparency if highlighter is not active
 }
 
 document.getElementById('colorPicker').addEventListener('input', (e) => {
