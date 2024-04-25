@@ -6,7 +6,6 @@ let lastY = 0;
 let currentTool = 'pen';
 let penColor = '#000000';
 let penThickness = 2;
-let isHighlighterActive = false;
 
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
@@ -46,8 +45,9 @@ canvas.addEventListener('mouseout', () => {
 
 function setTool(tool) {
     currentTool = tool;
-    isHighlighterActive = tool === 'highlighter'; // Set highlighter state
-    ctx.globalAlpha = isHighlighterActive ? 0.3 : 1; // Reset transparency if highlighter is not active
+    if (currentTool !== 'highlighter') {
+        ctx.globalAlpha = 1; // Reset transparency if not using highlighter
+    }
 }
 
 document.getElementById('colorPicker').addEventListener('input', (e) => {
@@ -63,7 +63,7 @@ document.getElementById('clearButton').addEventListener('click', () => {
 });
 
 document.getElementById('saveButton').addEventListener('click', () => {
-    const image = canvas.toDataURL('image/png');
+    const image = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
     const a = document.createElement('a');
     a.href = image;
     a.download = 'whiteboard.png';
