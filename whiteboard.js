@@ -72,6 +72,7 @@ document.getElementById('clearButton').addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+
 document.getElementById('saveButton').addEventListener('click', () => {
     const image = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
     const a = document.createElement('a');
