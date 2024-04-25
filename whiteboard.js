@@ -69,8 +69,9 @@ document.getElementById('eraserSizeRange').addEventListener('input', (e) => {
 });
 
 document.getElementById('clearButton').addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = canvas.width;
 });
+
 
 
 document.getElementById('saveButton').addEventListener('click', () => {
