@@ -6,6 +6,7 @@ let lastY = 0;
 let currentTool = 'pen';
 let penColor = '#000000';
 let penThickness = 2;
+let eraserSize = 20;
 
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
@@ -19,7 +20,7 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.lineTo(e.offsetX, e.offsetY);
         if (currentTool === 'eraser') {
             ctx.globalCompositeOperation = 'destination-out'; // Use eraser effect
-            ctx.lineWidth = 20; // Set eraser size
+            ctx.lineWidth = eraserSize; // Set eraser size
         } else if (currentTool === 'highlighter') {
             ctx.globalCompositeOperation = 'source-over'; // Reset drawing mode
             ctx.globalAlpha = 0.3; // Set transparency for highlighter effect
@@ -50,6 +51,9 @@ function setTool(tool) {
     if (currentTool !== 'highlighter') {
         ctx.globalAlpha = 1; // Reset transparency if not using highlighter
     }
+    if (currentTool !== 'eraser') {
+        ctx.globalCompositeOperation = 'source-over'; // Reset drawing mode
+    }
 }
 
 document.getElementById('colorPicker').addEventListener('input', (e) => {
@@ -58,6 +62,10 @@ document.getElementById('colorPicker').addEventListener('input', (e) => {
 
 document.getElementById('thicknessRange').addEventListener('input', (e) => {
     penThickness = e.target.value;
+});
+
+document.getElementById('eraserSizeRange').addEventListener('input', (e) => {
+    eraserSize = e.target.value;
 });
 
 document.getElementById('clearButton').addEventListener('click', () => {
@@ -69,5 +77,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
     const a = document.createElement('a');
     a.href = image;
     a.download = 'whiteboard.png';
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
 });
