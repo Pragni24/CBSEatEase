@@ -18,13 +18,15 @@ canvas.addEventListener('mousemove', (e) => {
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
         if (currentTool === 'eraser') {
-            ctx.strokeStyle = '#ffffff'; // Use white color for eraser
+            ctx.globalCompositeOperation = 'destination-out'; // Use eraser effect
             ctx.lineWidth = 20; // Set eraser size
         } else if (currentTool === 'highlighter') {
+            ctx.globalCompositeOperation = 'source-over'; // Reset drawing mode
             ctx.globalAlpha = 0.3; // Set transparency for highlighter effect
             ctx.strokeStyle = '#ffeb3b'; // Use yellow color for highlighter
             ctx.lineWidth = 10; // Set highlighter size
         } else {
+            ctx.globalCompositeOperation = 'source-over'; // Reset drawing mode
             ctx.globalAlpha = 1; // Reset transparency
             ctx.strokeStyle = penColor; // Use selected color for pen
             ctx.lineWidth = penThickness; // Set pen size
