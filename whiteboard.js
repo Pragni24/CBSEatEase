@@ -20,10 +20,9 @@ function clearCanvas() {
 }
 
 function downloadCanvas() {
-    const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     const link = document.createElement('a');
     link.download = 'whiteboard.png';
-    link.href = image;
+    link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     link.click();
 }
 
