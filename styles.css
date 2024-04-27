@@ -69,5 +69,5 @@ footer {
     color: #333;
 }
 ::selection {
-    background-color: yellow;
+    background-color: yellow; !important 
 }
