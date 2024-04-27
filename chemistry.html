@@ -3,6 +3,20 @@
 <head>
 	<title>Chemistry Past Papers</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<style>
+        #back-to-top {
+            display: none; /* Initially hide the button */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            z-index: 1000; /* Ensure it appears above other content */
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 	<header>
@@ -2238,7 +2252,32 @@ Amine Hormones: Amine hormones are derived from amino acids and can be either wa
 <br>
 Hormones function by binding to specific receptors on target cells or organs, initiating a signaling cascade that leads to a specific cellular response. This response can include changes in gene expression, enzyme activation, or ion channel opening. Hormones play a crucial role in maintaining homeostasis and coordinating various physiological processes in the body.
 			 <br><br>
-			</p>	  
+			</p>	
+
+<!-- Back to top button -->
+    <a href="#" id="back-to-top">Back to Top</a>
+
+    <!-- JavaScript to show/hide the button -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var button = document.getElementById('back-to-top');
+            if (window.pageYOffset > 10) { // Adjust this value based on when you want the button to appear
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to the top when the button is clicked
+        document.getElementById('back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+					  
   </main>
 </body>
 </html>
