@@ -3,6 +3,20 @@
 <head>
 	<title>Biology Past Papers</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<style>
+        #back-to-top {
+            display: none; /* Initially hide the button */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            z-index: 1000; /* Ensure it appears above other content */
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 	<header>
@@ -1091,6 +1105,31 @@ Palindromic sequences play a crucial role in the molecular tools and techniques 
 	-> Further, loss of rivets on the wings. (Key species that drive major ecosystem function) is obviously a more serious threat to flight safety than loss of a few rivets on the seats or windows inside the plane.<br>
 		</p>
 
-  </main>
+<!-- Back to top button -->
+    <a href="#" id="back-to-top">Back to Top</a>
+
+    <!-- JavaScript to show/hide the button -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var button = document.getElementById('back-to-top');
+            if (window.pageYOffset > 1) { // Adjust this value based on when you want the button to appear
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to the top when the button is clicked
+        document.getElementById('back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+  
+</main>
 </body>
 </html>
