@@ -68,3 +68,6 @@ footer {
     width: 100%;
     color: #333;
 }
+::selection {
+    background-color: yellow;
+}
