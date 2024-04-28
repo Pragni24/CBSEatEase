@@ -3,6 +3,20 @@
 <head>
 	<title>Physics Past Papers</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<style>
+        #back-to-top {
+            display: none; /* Initially hide the button */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            z-index: 1000; /* Ensure it appears above other content */
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 	<header>
@@ -3052,7 +3066,29 @@ Thus, when a carrier signal is modulated by a modulating signal in an AM system,
 <br><br>
 		 </p>
         
+<!-- Back to top button -->
+    <a href="#" id="back-to-top">Back to Top</a>
 
+    <!-- JavaScript to show/hide the button -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var button = document.getElementById('back-to-top');
+            if (window.pageYOffset > 10) { // Adjust this value based on when you want the button to appear
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to the top when the button is clicked
+        document.getElementById('back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 		
 	</main>
 	

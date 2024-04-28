@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBSEatEase</title>
+    <style>
+        #back-to-top {
+            display: none; /* Initially hide the button */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Distance from the bottom of the viewport */
+            right: 20px; /* Distance from the right of the viewport */
+            z-index: 1000; /* Ensure it appears above other content */
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,8 +31,9 @@
         <a href="mathematics.html">Mathematics</a>
         <a href="biology.html">Biology</a>
         <a href="pomodoro.html">Pomodoro Timer</a>
-        <a href="whiteboard.html">Whiteboard</a>
+        <a href="calculator.html">Calculator</a>
     </nav>
+    
     <main>
         <h2>About Us</h2>
         <p>Welcome to CBSEatEase, your one-stop solution for 12th class CBSE board exam preparation! We understand the challenges students face while juggling preparation for various entrance examinations along with board exams. Often, preparation for boards is left for the last two months, leading to stress and anxiety.</p>
@@ -64,7 +79,7 @@ The Pomodoro technique helps a user to effectively deal with time while performi
         <p>We have curated a 45-day study plan to help you prepare for your exams quickly. Follow that, we are sure it will help you a lot.Our study plan also contains important topics of each chapters along with link to one of the best video lectures out there!</p>
         <hr>
         <h4>Find our 45 days study plan here:</h4>
-        <p>This plan contains detialed study plan , we have also provided weekly mock tests to help you test yourself!</p>
+        <p>This plan contains detailed study plan , we have also provided weekly mock tests to help you test yourself!</p>
         <a href="45 Days Plan.xlsx" download>Download from here!(Available for both the streams, PCM and PCB)</a>
         <br>
         <p>Find the important topics subjectwise along with links to video lectures here:</p>
@@ -76,6 +91,30 @@ The Pomodoro technique helps a user to effectively deal with time while performi
     <footer>
         &copy; 2023 CBSEatEase
     </footer>
+
+    <!-- Back to top button -->
+    <a href="#" id="back-to-top">Back to Top</a>
+
+    <!-- JavaScript to show/hide the button -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var button = document.getElementById('back-to-top');
+            if (window.pageYOffset > 10) { // Adjust this value based on when you want the button to appear
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to the top when the button is clicked
+        document.getElementById('back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
     
 </body>
 </html>
